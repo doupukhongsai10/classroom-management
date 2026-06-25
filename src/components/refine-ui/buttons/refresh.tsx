@@ -33,9 +33,9 @@ export const RefreshButton = React.forwardRef<
   RefreshButtonProps
 >(
   (
-    { resource, recordItemId, dataProviderName, meta, children, ...rest },
-    ref
-  ) => {
+    { resource, recordItemId, dataProviderName, meta, children, onClick, ...rest },
+       ref
+    ) => {
     const {
       onClick: refresh,
       loading,
@@ -65,11 +65,11 @@ export const RefreshButton = React.forwardRef<
         {children ?? (
           <div className="flex items-center gap-2">
             <RefreshCcw
-              className={cn("h-4 w-4", {
-                "animate-spin": loading,
+              className={cn('h-4 w-4', {
+                'animate-spin': loading,
               })}
             />
-            <span>{label ?? "Refresh"}</span>
+            <span>{label ?? 'Refresh'}</span>
           </div>
         )}
       </Button>
