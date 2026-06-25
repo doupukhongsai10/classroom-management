@@ -20,8 +20,9 @@ const initialState: ThemeProviderState = {
   setTheme: () => null,
 };
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
-
+const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
+  undefined
+);
 export function ThemeProvider({
   children,
   defaultTheme = "system",
@@ -66,12 +67,12 @@ export function ThemeProvider({
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
+  const context = useContext(ThemeProviderContext);
 
   if (context === undefined)
-    throw new Error("useTheme must be used within a ThemeProvider")
+    throw new Error('useTheme must be used within a ThemeProvider');
 
-  return context
-}
+  return context;
+};
 
 ThemeProvider.displayName = "ThemeProvider";
